@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("header") -%> 
+<body>
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+        <%newListItems.map(listItem => {%>
+            <form action="/delete" method="post">
+                <div class="item row">
+                    <div class="col">
+                        <input type="checkbox">
+                    </div>
+
+                    <div class="col-6">
+                        <p><%=listItem.name%></p>
+                    </div>
+
+                    <div class="col">
+                        <button type="submit" class="btn btn-light btn-sm smallForm" name="toDelete" value=<%=`${listItem.id}`%>>Delete</button>
+                    </div>
+                </div>
+            </form>
+        <%});%>
+        <form class="" action="/" method="post">
+
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" class="bigForm" name="list" value=<%= listTitle %>>+</button>
+    
+        </form>
+
+    </div>
+
+    <script src="js/lineThroughP.js"></script>
+
+    <%- include("footer") -%>
+</body> 
+</html>
